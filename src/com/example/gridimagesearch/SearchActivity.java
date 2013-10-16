@@ -33,10 +33,10 @@ public class SearchActivity extends Activity {
 
 	ImageResultsArrayAdapter imageAdapter;
 	ArrayList<ImageResult> imageResults = new ArrayList<ImageResult>();
-	private String imgcolor = null;
-	private String imgsz = null;
-	private String type = null;
-	private String site = null;
+	private String imgcolor = new String("");
+	private String imgsz = new String("");
+	private String type= new String("");;
+	private String site= new String("");;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,18 +51,20 @@ public class SearchActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				onImageSearch(v, 0);
-				gvResults.setOnScrollListener(new EndlessScrollListener() {
-					@Override
-					public void loadMore(int page, int totalItemsCount) {
-						View v = getCurrentFocus();
-						onImageSearch(v, totalItemsCount);
+				
+			}
+		});
 
-					}
-				});
+		gvResults.setOnScrollListener(new EndlessScrollListener() {
+			@Override
+			public void loadMore(int page, int totalItemsCount) {
+				View v = getCurrentFocus();
+				onImageSearch(v, totalItemsCount);
 
 			}
 		});
 
+		
 		gvResults.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
